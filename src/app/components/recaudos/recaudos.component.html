@@ -1,4 +1,8 @@
 <div class="mat-elevation-z8">
+  <mat-form-field floatPlaceholder="never" color="primary">
+    <input [(ngModel)]="inputFiltro" matInput (keyup)="filtrar($event)" placeholder="Buscar">
+  </mat-form-field>
+
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="fecha">

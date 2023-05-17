@@ -15,6 +15,7 @@ export class RecaudosComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['fecha', 'estacion', 'sentido', 'hora', 'categoria', 'cantidad', 'valorTabulado'];
   dataSource: any = null;
   recaudos?: RecaudoModel[];
+  inputFiltro?: string;
 
   registrosPorPagina?: number;
   pageIndex?: number;
@@ -54,8 +55,12 @@ export class RecaudosComponent implements OnInit, AfterViewInit {
     let page = e.pageIndex;
     this.pageIndex = page;
     page++;
-    console.log(page);
     this.getRecaudos(page);
+  }
+
+  filtrar(event: Event) {
+    const filtro: string = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro;
   }
 
   ngAfterViewInit() {
