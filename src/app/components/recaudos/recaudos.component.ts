@@ -28,7 +28,7 @@ export class RecaudosComponent implements OnInit, AfterViewInit {
   }
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
-  @ViewChild(MatSort) sort?: MatSort;
+  @ViewChild(MatSort, {static: false}) sort?: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef | any;
 
   ngOnInit() {
