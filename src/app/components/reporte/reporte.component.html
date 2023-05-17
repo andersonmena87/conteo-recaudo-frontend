@@ -1,0 +1,39 @@
+<section>
+  <h2>Generar reporte mensual</h2>
+  <form [formGroup]="reporteformGroup">
+    <mat-form-field>
+      <mat-label>Fecha Inicial</mat-label>
+      <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDateFinal" formControlName="fechaInicial"
+        required value="">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel> Cancelar </button>
+          <button mat-raised-button color="primary" (click)="setMaxDate()" matDatepickerApply>Aplicar</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+      <mat-error *ngIf="reporteformGroup.invalid">{{getErrorMessageFecha()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Fecha Final</mat-label>
+      <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDateFinal" formControlName="fechaFinal"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel> Cancelar </button>
+          <button mat-raised-button color="primary" matDatepickerApply>Aplicar</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+      <mat-error *ngIf="reporteformGroup.invalid">{{getErrorMessageFecha()}}</mat-error>
+    </mat-form-field>
+
+    <button mat-button type="button" class="excel" (click)="getExcel()" [disabled] = "reporteformGroup.invalid">
+      Exportar a Excel
+      <mat-icon>file_download</mat-icon>
+    </button>
+  </form>
+</section>
+
+
